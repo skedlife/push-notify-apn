@@ -315,7 +315,7 @@ data JsonAps
     -- ^ The main content of the message
     , jaAppSpecificContent :: !(Maybe Text)
     -- ^ Extra information to be used by the receiving app
-    , jaSupplementalFields :: !(Map Text Value)
+    , jaSupplementalFields :: !(Map Key Value)
     -- ^ Additional fields to be used by the receiving app
     } deriving (Generic, Show)
 
@@ -358,7 +358,7 @@ newMessageWithCustomPayload message payload =
 -- NB: The field 'aps' must not be modified; attempting to do so will
 -- cause a crash.
 addSupplementalField :: ToJSON record =>
-       Text
+       Key
     -- ^ The field name
     -> record
     -- ^ The value
